@@ -1,5 +1,7 @@
 # Ratsit
 
+[![Gem Version](https://badge.fury.io/rb/ratsit.svg)](https://rubygems.org/gems/ratsit)
+
 Ruby gem for performing Ratsit searches.
 
 _Note_: This gem is under active development and might not be suitable for use yet...
