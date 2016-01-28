@@ -1,13 +1,22 @@
 
 require 'ratsit'
+require 'ratsit/errors'
+require 'ratsit/filter/filter'
+require 'ratsit/filter/filter_company'
+require 'ratsit/filter/filter_person'
 
 describe Ratsit do
 
-  it 'should perform a basic search' do
-    psr = Ratsit::PersonSearch.new
-    psr.search('Stefan Nyman')
-    psr.filter.update(Ratsit::FILTER_COMPANY_ENGAGEMENT)
-    #puts psr.results
+  it 'should fail' do
+    expect {
+      Ratsit.OpenPersonSearch('', '', Ratsit::Filter::CompanyFilter.new())
+    }.to raise_error(error=RatsitFilterError)
+  end
+
+  it 'should fail' do
+    expect {
+      Ratsit.OpenCompanySearch('', '', Ratsit::Filter::PersonFilter.new())
+    }.to raise_error(error=RatsitFilterError)
   end
 
 end
