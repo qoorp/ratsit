@@ -16,6 +16,9 @@ require 'ratsit/filter/filter_search_persons'
 require 'ratsit/request/request'
 require 'ratsit/request/open_request'
 require 'ratsit/request/token_request'
+require 'ratsit/request/request_get_companies'
+require 'ratsit/request/request_search_one_person'
+require 'ratsit/request/request_search_persons'
 
 
 module Ratsit
@@ -52,28 +55,30 @@ module Ratsit
     nil
   end
 
-  def Ratsit.parseFilterArgs(args, filter_class)
-    if args.nil?
-      raise RatsitFilterError, 'Invalid args to function'
-    end
-    if args.instance_of?(filter_class)
-      return args
-    end
-    if args.is_a?(Hash)
-      return filter_class.new(args)
-    end
-    raise RatsitFilterError, 'Invalid args to function'
-  end
-
-  def Ratsit.doTokenRequest(ept, filter_instance)
-    req = Ratsit::Request::TokenRequest.new(ept, filter_instance)
-    req.exec()
-    if req.response_ok
-      return req.response_body
-    end
+  def Ratsit.doTokenRequest(req_class, filter_args)
+      req = req_class.new(filter_args)
+      puts req
+      req.exec()
+      return req.response
     nil
   end
 
+  def Ratsit.SearchCompanies(args=nil)
+    return Ratsit.doTokenRequest(Ratsit::Request::GetCompaniesRequest, args)
+  end
+
+  def Ratsit.SearchOnePerson(args=nil)
+    return Ratsit.doTokenRequest(Ratsit::Request::SearchOnePersonRequest, args)
+  end
+
+  def Ratsit.SearchPersons(args=nil)
+    return Ratsit.doTokenRequest(Ratsit::Request::SearchPersonsRequest, args)
+  end
+
+
+end
+
+=begin
   def Ratsit.GetAnnualReport(args=nil)
     return Ratsit.doTokenRequest('GetAnnualReport', Ratsit.parseFilterArgs(args, Ratsit::Filter::GetAnnualReportFilter))
   end
@@ -97,5 +102,5 @@ module Ratsit
   def Ratsit.SearchPersons(args=nil)
     return Ratsit.doTokenRequest('SearchPersons', Ratsit.parseFilterArgs(args, Ratsit::Filter::SearchPersonsFilter))
   end
+=end
 
-end
