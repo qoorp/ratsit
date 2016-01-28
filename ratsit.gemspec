@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Stefan Nyman"]
   spec.email         = ["stefan@qoorp.com"]
 
-  spec.summary       = "Ratsit searches..."
-  spec.description   = "Ratsit searches..."
+  spec.summary       = "Perform Ratsit searches for persons and companies."
+  spec.description   = "Can search using either the open api endpoints or by using an api key. Search methods: OpenPersonSearch, OpenCompanySearch, SearchCompanies, SearchPersons, SearchOnePerson."
   spec.homepage      = "http://github.com/qoorp/ratsit"
   spec.license       = "MIT"
 
