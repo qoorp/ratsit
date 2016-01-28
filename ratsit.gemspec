@@ -32,4 +32,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.2"
 
   spec.add_runtime_dependency "faraday", "~> 0.9.2"
+  spec.add_runtime_dependency "savon", "~> 2.10.0"
 end
