@@ -27,10 +27,17 @@ module Ratsit
 
       def response
         if response_ok
-          rsp = @response.body[:search_persons_response][:search_persons_result][:ratsit_response_package][:person_search_result][:hits][:hit] || nil
+          rsp = @response.body[:search_persons_response][:search_persons_result][:ratsit_response_package][:person_search_result]
           if rsp.nil?
             raise RatsitError, 'Invalid response from service'
           end
+          if rsp[:hits].nil?
+            return {
+                :retrieved => 0,
+                :persons => []
+            }
+          end
+          rsp = rsp[:hits][:hit]
           if rsp.is_a?(Hash)
             rsp = [rsp]
           end
