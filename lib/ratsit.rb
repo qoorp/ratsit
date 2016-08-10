@@ -103,4 +103,3 @@ end
     return Ratsit.doTokenRequest('SearchPersons', Ratsit.parseFilterArgs(args, Ratsit::Filter::SearchPersonsFilter))
   end
 =end
-
