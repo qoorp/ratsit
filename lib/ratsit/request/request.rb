@@ -31,17 +31,17 @@ module Ratsit
       end
 
       def parseFilterArgs(args, filter_class)
-      if args.nil?
+        if args.nil?
+          raise RatsitFilterError, 'Invalid args to function'
+        end
+        if args.instance_of?(filter_class)
+          return args
+        end
+        if args.is_a?(Hash)
+          return filter_class.new(args)
+        end
         raise RatsitFilterError, 'Invalid args to function'
       end
-      if args.instance_of?(filter_class)
-        return args
-      end
-      if args.is_a?(Hash)
-        return filter_class.new(args)
-      end
-      raise RatsitFilterError, 'Invalid args to function'
-    end
 
     end
   end
