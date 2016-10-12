@@ -18,9 +18,13 @@ module Ratsit
       def exec()
         begin
           # debug args: , log_level: :debug, log: true
-          client = Savon.client(wsdl: "https://www.ratsit.se/ratsvc/apipackageservice.asmx?WSDL")
+          url = ENV['RATSIT_WSDL_URL']
+          if url.nil?
+            raise RatsitRequestError, 'Missing RATSIT_WSDL_URL in env'
+          end
+          client = Savon.client(wsdl: url)
           @response = client.call(@ept.underscore.to_sym, message: @filter_instance.to_obj)
-        rescue Savon::Error => error
+        rescue Savon::Error
           raise RatsitError, 'Provider error'
         end
       end

@@ -10,4 +10,3 @@ end
 
 class RatsitFilterError < RatsitError
 end
-
