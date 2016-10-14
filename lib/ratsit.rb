@@ -19,6 +19,7 @@ require 'ratsit/request/token_request'
 require 'ratsit/request/request_get_companies'
 require 'ratsit/request/request_search_one_person'
 require 'ratsit/request/request_search_persons'
+require 'ratsit/request/request_get_person_information_package'
 
 
 module Ratsit
@@ -75,7 +76,9 @@ module Ratsit
     return Ratsit.doTokenRequest(Ratsit::Request::SearchPersonsRequest, args)
   end
 
-
+  def Ratsit.GetPersonInformationPackage(args=nil)
+    return Ratsit.doTokenRequest(Ratsit::Request::GetPersonInformationPackageRequest, args)
+  end
 end
 
 =begin
@@ -91,9 +94,7 @@ end
     return Ratsit.doTokenRequest('GetCompanyInformationPackage', Ratsit.parseFilterArgs(args, Ratsit::Filter::GetCompanyInformationPackageFilter))
   end
 
-  def Ratsit.GetPersonInformationPackage(args=nil)
-    return Ratsit.doTokenRequest('GetPersonInformationPackage', Ratsit.parseFilterArgs(args, Ratsit::Filter::GetPersonInformationPackageFilter))
-  end
+
 
   def Ratsit.SearchOnePerson(args=nil)
     return Ratsit.doTokenRequest('SearchOnePerson', Ratsit.parseFilterArgs(args, Ratsit::Filter::SearchOnePersonFilter))

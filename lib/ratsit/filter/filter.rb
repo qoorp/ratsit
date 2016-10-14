@@ -47,9 +47,9 @@ module Ratsit
 
     FILTER_NUMBER_OF_HITS = 'numberOfHits'
 
-    FILTER_PACKAGE_SMALL_1 = 'small 1'
-    FILTER_PACKAGE_SMALL_2 = 'small 2'
-    FILTER_PACKAGE_SMALL_3 = 'small 3'
+    FILTER_PACKAGE_SMALL_1 = 'Small 1'
+    FILTER_PACKAGE_SMALL_2 = 'Small 2'
+    FILTER_PACKAGE_SMALL_3 = 'Small 3'
     FILTER_PACKAGE_REMARK = 'anmärkning'
     FILTER_PACKAGE_MEDIUM = 'medium'
     FILTER_PACKAGE_LARGE = 'large'
@@ -115,6 +115,8 @@ module Ratsit
     private
 
     def parse_string(arg)
+      puts arg.inspect
+      puts arg.is_a?(String)
       return arg if arg.is_a?(String)
       raise RatsitFilterError, 'Invalid string'
     end
@@ -187,6 +189,7 @@ module Ratsit
     end
 
     def validate_filters(filter_defaults={}, filters={})
+      puts filter_defaults
       if !filters.is_a?(Hash)
         filters = {}
       end
