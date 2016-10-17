@@ -57,11 +57,10 @@ module Ratsit
   end
 
   def Ratsit.doTokenRequest(req_class, filter_args)
-      req = req_class.new(filter_args)
-      puts req
-      req.exec()
-      return req.response
-    nil
+    req = req_class.new(filter_args)
+    puts req
+    req.exec()
+    return req.response
   end
 
   def Ratsit.SearchCompanies(args=nil)
