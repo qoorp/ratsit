@@ -27,7 +27,6 @@ module Ratsit
 
       def response
         if response_ok
-          puts @response.body
           hits = @response.body[:search_one_person_response][:search_one_person_result][:ratsit_response_package][:person_search_result][:hits]
           if hits.nil?
             return nil

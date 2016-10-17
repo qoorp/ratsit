@@ -115,8 +115,6 @@ module Ratsit
     private
 
     def parse_string(arg)
-      puts arg.inspect
-      puts arg.is_a?(String)
       return arg if arg.is_a?(String)
       raise RatsitFilterError, 'Invalid string'
     end
@@ -189,7 +187,6 @@ module Ratsit
     end
 
     def validate_filters(filter_defaults={}, filters={})
-      puts filter_defaults
       if !filters.is_a?(Hash)
         filters = {}
       end

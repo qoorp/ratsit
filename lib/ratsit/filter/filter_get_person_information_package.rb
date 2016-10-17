@@ -15,7 +15,6 @@ module Ratsit
             FILTER_PACKAGES => {:parse => method(:parse_list), :default => '', :validate => method(:validate_package_types)},
             FILTER_PNR => {:parse => method(:parse_string), :default => ''}
         }
-        puts filters
         @active_filters = validate_filters(@filter_defaults, filters)
       end
     end

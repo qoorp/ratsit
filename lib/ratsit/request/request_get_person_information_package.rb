@@ -20,13 +20,11 @@ module Ratsit
     class GetPersonInformationPackageRequest < Ratsit::Request::TokenRequest
 
       def initialize(args)
-        puts args
         super('GetPersonInformationPackage', parseFilterArgs(args, Ratsit::Filter::GetPersonInformationPackageFilter))
       end
 
       def response
         if response_ok
-          puts @response.body
           hits = @response.body[:get_person_information_package_response][:get_person_information_package_result][:ratsit_response_package][:person_search_result]
           if hits.nil?
             return nil
