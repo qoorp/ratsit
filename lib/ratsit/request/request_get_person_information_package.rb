@@ -25,7 +25,6 @@ module Ratsit
 
       def response
         if response_ok
-          puts JSON.dump(@response.body)
           return @response.body[:get_person_information_package_response][:get_person_information_package_result][:ratsit_response_package][:person_information_package]
         end
         raise RatsitError, 'Response not ready'

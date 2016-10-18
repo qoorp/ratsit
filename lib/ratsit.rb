@@ -14,7 +14,6 @@ require 'ratsit/filter/filter_search_one_person'
 require 'ratsit/filter/filter_search_persons'
 
 require 'ratsit/request/request'
-require 'ratsit/request/open_request'
 require 'ratsit/request/token_request'
 require 'ratsit/request/request_get_companies'
 require 'ratsit/request/request_search_one_person'
@@ -30,30 +29,6 @@ module Ratsit
       raise RatsitError, 'No api key specified'
     end
     return ENV[key_key]
-  end
-
-  def Ratsit.OpenPersonSearch(search_term, search_area, filter_instance=nil)
-    if !filter_instance.nil? && !filter_instance.instance_of?(Ratsit::Filter::PersonFilter)
-      raise RatsitFilterError, 'Invalid filter given to function'
-    end
-    req = Ratsit::Request::OpenRequest.new(Ratsit::Request::OPEN_REQUEST_EPTS[:person], search_term, search_area, filter_instance || Ratsit::Filter::PersonFilter.new())
-    req.exec()
-    if req.response_ok
-      return req.response_body
-    end
-    nil
-  end
-
-  def Ratsit.OpenCompanySearch(search_term, search_area, filter_instance=nil)
-    if !filter_instance.nil? && !filter_instance.instance_of?(Ratsit::Filter::CompanyFilter)
-      raise RatsitFilterError, 'Invalid filter given to function'
-    end
-    req = Ratsit::Request::OpenRequest.new(Ratsit::Request::OPEN_REQUEST_EPTS[:company], search_term, search_area, filter_instance || Ratsit::Filter::CompanyFilter.new())
-    req.exec()
-    if req.response_ok
-      return req.response_body
-    end
-    nil
   end
 
   def Ratsit.doTokenRequest(req_class, filter_args)
