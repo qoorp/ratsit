@@ -6,11 +6,11 @@ require 'ratsit/version'
 Gem::Specification.new do |spec|
   spec.name          = "ratsit"
   spec.version       = Ratsit::VERSION
-  spec.authors       = ["Stefan Nyman"]
-  spec.email         = ["stefan@qoorp.com"]
+  spec.authors       = ["Stefan Nyman", "Daniel Lundqvist"]
+  spec.email         = ["stefan@qoorp.com", "daniel@qoorp.com"]
 
   spec.summary       = "Perform Ratsit searches for persons and companies."
-  spec.description   = "Can search using either the open api endpoints or by using an api key. Search methods: OpenPersonSearch, OpenCompanySearch, SearchCompanies, SearchPersons, SearchOnePerson."
+  spec.description   = "Can search by using an api key. Search methods: SearchCompanies, SearchPersons, SearchOnePerson. GetPersonInformationPackage"
   spec.homepage      = "http://github.com/qoorp/ratsit"
   spec.license       = "MIT"
 
